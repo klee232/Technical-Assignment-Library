@@ -1,3 +1,13 @@
+% Created Date: March 9th, 2023
+% Belong to: Leelab.ai
+% Creator: Kuan-Min Lee
+% Function Instruction:
+% This function is created to provide a upsampling 2D simulation for a testing
+% image.
+% Function Arguments:
+% Img: tested image (data size: (width image, length image, channel image)
+% factor: upsampling factor (data size: integer)
+
 function up_img=intep_up(img,factor)
     % get the size of the image
     wid_img=size(img,1); % get the width of the image
