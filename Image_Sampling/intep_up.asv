@@ -13,12 +13,10 @@ function up_img=intep_up(img,factor)
     % insert input parser for organizing the required and optional input
     p=inputParser;
     checkarray = @(x) ~isempty(x);
-    checkinteger = @(x) isfinite(x) && x == floor(x);
     addRequired(p,"img",checkarray);
-    addRequired(p,"factor",checkinteger);
-    parse(p,img,factor);
+    addRe
+    parse(p,img);
     img=p.Results.img;
-    factor=p.Results.factor;
 
     % get the size of the image
     wid_img=size(img,1); % get the width of the image
