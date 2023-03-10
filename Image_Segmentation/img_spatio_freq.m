@@ -15,7 +15,7 @@ function spatio_freq=img_spatio_freq(image)
     addRequired(p,"image",checkarray);
     parse(p,image);
     image=p.Results.image;
-    
+
     % find out the dimension of the image
     wid_img=size(image,1);
     len_img=size(image,2);
@@ -37,7 +37,7 @@ function spatio_freq=img_spatio_freq(image)
         % get the current tested row
         curr_row=gray_img(i_wid,:);
         % find the local maximums of the data points
-        loc_maxs=islocmax(curr_row);
+        loc_maxs=islocalmax(curr_row);
         % find out the positions of local maximums
         loc_maxs_pos=find(loc_maxs);
 
@@ -51,7 +51,7 @@ function spatio_freq=img_spatio_freq(image)
             % calculate the difference between adjecent element
             ind_diff=diff(loc_maxs_pos);
             % calculate the mean of the difference 
-            mean_diff=diff(ind_diff,'all');
+            mean_diff=mean(ind_diff,'all');
             row_freqs(1,i_wid)=mean_diff;
         end
     end
@@ -61,9 +61,9 @@ function spatio_freq=img_spatio_freq(image)
     % retrieve the image spatio frequency along x direction
     for i_len=1:len_img
         % get the current tested row
-        curr_col=gray_img(i_len,:);
+        curr_col=gray_img(:,i_len);
         % find the local maximums of the data points
-        loc_maxs=islocmax(curr_col);
+        loc_maxs=islocalmax(curr_col);
         % find out the positions of local maximums
         loc_maxs_pos=find(loc_maxs);
 
@@ -77,7 +77,7 @@ function spatio_freq=img_spatio_freq(image)
             % calculate the difference between adjecent element
             ind_diff=diff(loc_maxs_pos);
             % calculate the mean of the difference 
-            mean_diff=diff(ind_diff,'all');
+            mean_diff=mean(ind_diff,'all');
             col_freqs(1,i_wid)=mean_diff;
         end
     end
